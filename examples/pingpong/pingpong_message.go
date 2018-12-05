@@ -1,6 +1,6 @@
 package pingpong
 
-import "github.com/leesper/tao"
+import "github.com/json7/tao"
 
 const (
 	// PingPontMessage defines message number.

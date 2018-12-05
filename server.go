@@ -164,6 +164,10 @@ func (s *Server) ConnsSize() int {
 	return sz
 }
 
+func (s *Server) Conns()  {
+	
+}
+
 // Sched sets a callback to invoke every duration.
 func (s *Server) Sched(dur time.Duration, sched func(time.Time, WriteCloser)) {
 	s.mu.Lock()

@@ -8,8 +8,8 @@ import (
 	"syscall"
 
 	"github.com/leesper/holmes"
-	"github.com/leesper/tao"
-	"github.com/leesper/tao/examples/chat"
+	"github.com/json7/tao"
+	"github.com/json7/tao/examples/chat"
 )
 
 // ChatServer is the chatting server.

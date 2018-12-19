@@ -28,9 +28,9 @@ func (cm Message) Serialize() ([]byte, error) {
 }
 
 // DeserializeMessage deserializes bytes into Message.
-func DeserializeMessage(data []byte) (message tao.Message, err error) {
+func DeserializeMessage(data []byte) (message stw.Message, err error) {
 	if data == nil {
-		return nil, tao.ErrNilData
+		return nil, stw.ErrNilData
 	}
 	content := string(data)
 	msg := Message{
@@ -40,11 +40,11 @@ func DeserializeMessage(data []byte) (message tao.Message, err error) {
 }
 
 // ProcessMessage handles the Message logic.
-func ProcessMessage(ctx context.Context, conn tao.WriteCloser) {
+func ProcessMessage(ctx context.Context, conn stw.WriteCloser) {
 	holmes.Infof("ProcessMessage")
-	s, ok := tao.ServerFromContext(ctx)
+	s, ok := stw.ServerFromContext(ctx)
 	if ok {
-		msg := tao.MessageFromContext(ctx)
+		msg := stw.MessageFromContext(ctx)
 		s.Broadcast(msg)
 	}
 }

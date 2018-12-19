@@ -16,14 +16,14 @@ var (
 func main() {
 	defer holmes.Start().Stop()
 
-	tao.Register(pingpong.PingPontMessage, pingpong.DeserializeMessage, ProcessPingPongMessage)
+	stw.Register(pingpong.PingPontMessage, pingpong.DeserializeMessage, ProcessPingPongMessage)
 
 	c, err := net.Dial("tcp", "127.0.0.1:12346")
 	if err != nil {
 		holmes.Fatalln(err)
 	}
 
-	conn := tao.NewClientConn(0, c)
+	conn := stw.NewClientConn(0, c)
 	defer conn.Close()
 
 	conn.Start()
@@ -37,7 +37,7 @@ func main() {
 }
 
 // ProcessPingPongMessage handles business logic.
-func ProcessPingPongMessage(ctx context.Context, conn tao.WriteCloser) {
-	rsp := tao.MessageFromContext(ctx).(pingpong.Message)
+func ProcessPingPongMessage(ctx context.Context, conn stw.WriteCloser) {
+	rsp := stw.MessageFromContext(ctx).(pingpong.Message)
 	rspChan <- rsp.Info
 }

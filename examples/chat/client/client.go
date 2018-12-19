@@ -13,39 +13,39 @@ import (
 func main() {
 	defer holmes.Start().Stop()
 
-	tao.Register(chat.ChatMessage, chat.DeserializeMessage, nil)
+	stw.Register(chat.ChatMessage, chat.DeserializeMessage, nil)
 
 	c, err := net.Dial("tcp", "127.0.0.1:12345")
 	if err != nil {
 		holmes.Fatalln(err)
 	}
 
-	onConnect := tao.OnConnectOption(func(c tao.WriteCloser) bool {
+	onConnect := stw.OnConnectOption(func(c stw.WriteCloser) bool {
 		holmes.Infoln("on connect")
 		return true
 	})
 
-	onError := tao.OnErrorOption(func(c tao.WriteCloser) {
+	onError := stw.OnErrorOption(func(c stw.WriteCloser) {
 		holmes.Infoln("on error")
 	})
 
-	onClose := tao.OnCloseOption(func(c tao.WriteCloser) {
+	onClose := stw.OnCloseOption(func(c stw.WriteCloser) {
 		holmes.Infoln("on close")
 	})
 
-	onMessage := tao.OnMessageOption(func(msg tao.Message, c tao.WriteCloser) {
+	onMessage := stw.OnMessageOption(func(msg stw.Message, c stw.WriteCloser) {
 		fmt.Print(msg.(chat.Message).Content)
 	})
 
-	options := []tao.ServerOption{
+	options := []stw.ServerOption{
 		onConnect,
 		onError,
 		onClose,
 		onMessage,
-		tao.ReconnectOption(),
+		stw.ReconnectOption(),
 	}
 
-	conn := tao.NewClientConn(0, c, options...)
+	conn := stw.NewClientConn(0, c, options...)
 	defer conn.Close()
 
 	conn.Start()

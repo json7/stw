@@ -11,32 +11,32 @@ import (
 )
 
 func main() {
-	tao.Register(echo.Message{}.MessageNumber(), echo.DeserializeMessage, nil)
+	stw.Register(echo.Message{}.MessageNumber(), echo.DeserializeMessage, nil)
 
 	c, err := net.Dial("tcp", "127.0.0.1:12345")
 	if err != nil {
 		holmes.Fatalln(err)
 	}
 
-	onConnect := tao.OnConnectOption(func(conn tao.WriteCloser) bool {
+	onConnect := stw.OnConnectOption(func(conn stw.WriteCloser) bool {
 		holmes.Infoln("on connect")
 		return true
 	})
 
-	onError := tao.OnErrorOption(func(conn tao.WriteCloser) {
+	onError := stw.OnErrorOption(func(conn stw.WriteCloser) {
 		holmes.Infoln("on error")
 	})
 
-	onClose := tao.OnCloseOption(func(conn tao.WriteCloser) {
+	onClose := stw.OnCloseOption(func(conn stw.WriteCloser) {
 		holmes.Infoln("on close")
 	})
 
-	onMessage := tao.OnMessageOption(func(msg tao.Message, conn tao.WriteCloser) {
+	onMessage := stw.OnMessageOption(func(msg stw.Message, conn stw.WriteCloser) {
 		echo := msg.(echo.Message)
 		fmt.Printf("%s\n", echo.Content)
 	})
 
-	conn := tao.NewClientConn(0, c, onConnect, onError, onClose, onMessage)
+	conn := stw.NewClientConn(0, c, onConnect, onError, onClose, onMessage)
 
 	echo := echo.Message{
 		Content: "hello, world",

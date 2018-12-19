@@ -14,30 +14,30 @@ import (
 
 // EchoServer represents the echo server.
 type EchoServer struct {
-	*tao.Server
+	*stw.Server
 }
 
 // NewEchoServer returns an EchoServer.
 func NewEchoServer() *EchoServer {
-	onConnect := tao.OnConnectOption(func(conn tao.WriteCloser) bool {
+	onConnect := stw.OnConnectOption(func(conn stw.WriteCloser) bool {
 		holmes.Infoln("on connect")
 		return true
 	})
 
-	onClose := tao.OnCloseOption(func(conn tao.WriteCloser) {
+	onClose := stw.OnCloseOption(func(conn stw.WriteCloser) {
 		holmes.Infoln("closing client")
 	})
 
-	onError := tao.OnErrorOption(func(conn tao.WriteCloser) {
+	onError := stw.OnErrorOption(func(conn stw.WriteCloser) {
 		holmes.Infoln("on error")
 	})
 
-	onMessage := tao.OnMessageOption(func(msg tao.Message, conn tao.WriteCloser) {
+	onMessage := stw.OnMessageOption(func(msg stw.Message, conn stw.WriteCloser) {
 		holmes.Infoln("receving message")
 	})
 
 	return &EchoServer{
-		tao.NewServer(onConnect, onClose, onError, onMessage),
+		stw.NewServer(onConnect, onClose, onError, onMessage),
 	}
 }
 
@@ -46,7 +46,7 @@ func main() {
 
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
-	tao.Register(echo.Message{}.MessageNumber(), echo.DeserializeMessage, echo.ProcessMessage)
+	stw.Register(echo.Message{}.MessageNumber(), echo.DeserializeMessage, echo.ProcessMessage)
 
 	l, err := net.Listen("tcp", ":12345")
 	if err != nil {

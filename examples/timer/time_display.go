@@ -11,11 +11,11 @@ import (
 
 func main() {
 	wg := &sync.WaitGroup{}
-	wheel := tao.NewTimingWheel(context.TODO())
+	wheel := stw.NewTimingWheel(context.TODO())
 	timerID := wheel.AddTimer(
 		time.Now().Add(2*time.Second),
 		1*time.Second,
-		tao.NewOnTimeOut(context.TODO(), func(t time.Time, c tao.WriteCloser) { fmt.Printf("TIME OUT AT %s\n", t) }))
+		stw.NewOnTimeOut(context.TODO(), func(t time.Time, c stw.WriteCloser) { fmt.Printf("TIME OUT AT %s\n", t) }))
 	fmt.Printf("Add timer %d\n", timerID)
 
 	wg.Add(1)

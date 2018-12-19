@@ -23,9 +23,9 @@ func (pp Message) Serialize() ([]byte, error) {
 }
 
 // DeserializeMessage deserializes bytes into Message.
-func DeserializeMessage(data []byte) (message tao.Message, err error) {
+func DeserializeMessage(data []byte) (message stw.Message, err error) {
 	if data == nil {
-		return nil, tao.ErrNilData
+		return nil, stw.ErrNilData
 	}
 	info := string(data)
 	msg := Message{
@@ -34,12 +34,12 @@ func DeserializeMessage(data []byte) (message tao.Message, err error) {
 	return msg, nil
 }
 
-// func ProcessPingPongMessage(ctx tao.Context, conn tao.Connection) {
-//   if serverConn, ok := conn.(*tao.ServerConnection); ok {
+// func ProcessPingPongMessage(ctx stw.Context, conn stw.Connection) {
+//   if serverConn, ok := conn.(*stw.ServerConnection); ok {
 //     if serverConn.GetOwner() != nil {
 //       connections := serverConn.GetOwner().GetAllConnections()
 //       for v := range connections.IterValues() {
-//         c := v.(tao.Connection)
+//         c := v.(stw.Connection)
 //         c.Write(ctx.Message())
 //       }
 //     }

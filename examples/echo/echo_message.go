@@ -23,9 +23,9 @@ func (em Message) MessageNumber() int32 {
 }
 
 // DeserializeMessage deserializes bytes into Message.
-func DeserializeMessage(data []byte) (message tao.Message, err error) {
+func DeserializeMessage(data []byte) (message stw.Message, err error) {
 	if data == nil {
-		return nil, tao.ErrNilData
+		return nil, stw.ErrNilData
 	}
 	msg := string(data)
 	echo := Message{
@@ -35,8 +35,8 @@ func DeserializeMessage(data []byte) (message tao.Message, err error) {
 }
 
 // ProcessMessage process the logic of echo message.
-func ProcessMessage(ctx context.Context, conn tao.WriteCloser) {
-	msg := tao.MessageFromContext(ctx).(Message)
+func ProcessMessage(ctx context.Context, conn stw.WriteCloser) {
+	msg := stw.MessageFromContext(ctx).(Message)
 	holmes.Infof("receving message %s\n", msg.Content)
 	conn.Write(msg)
 }

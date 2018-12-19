@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/leesper/holmes"
-	"github.com/json7/swt"
+	"github.com/json7/stw"
 )
 
 // Message defines the echo message.

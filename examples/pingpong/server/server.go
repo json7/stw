@@ -6,8 +6,8 @@ import (
 	"runtime"
 
 	"github.com/leesper/holmes"
-	"github.com/json7/swt"
-	"github.com/json7/swt/examples/pingpong"
+	"github.com/json7/stw"
+	"github.com/json7/stw/examples/pingpong"
 )
 
 // PingPongServer defines pingpong server.

@@ -1,6 +1,6 @@
 package pingpong
 
-import "github.com/json7/swt"
+import "github.com/json7/stw"
 
 const (
 	// PingPontMessage defines message number.

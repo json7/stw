@@ -6,8 +6,8 @@ import (
 	"net"
 	"os"
 	"github.com/leesper/holmes"
-	"github.com/json7/swt"
-	"github.com/json7/swt/examples/chat"
+	"github.com/json7/stw"
+	"github.com/json7/stw/examples/chat"
 )
 
 func main() {

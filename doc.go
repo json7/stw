@@ -1,5 +1,5 @@
 /*
-Package tao implements a light-weight TCP network programming framework.
+package stw implements a light-weight TCP network programming framework.
 
 Server represents a TCP server with various ServerOption supported.
 
@@ -55,4 +55,4 @@ TimingWheel is a safe timer for running timed callbacks on connection.
 WorkerPool is a go-routine pool for running message handlers, you can fetch one
 by calling func WorkerPoolInstance() *WorkerPool.
 */
-package tao
+package stw

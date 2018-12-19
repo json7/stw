@@ -3,10 +3,10 @@
 Light-weight TCP Asynchronous gOlang framework
 轻量级TCP异步框架，Go语言实现 1.6.0
 
-[![GitHub stars](https://img.shields.io/github/stars/json7/tao.svg)](https://github.com/json7/tao/stargazers) 
-[![GitHub forks](https://img.shields.io/github/forks/json7/tao.svg)](https://github.com/json7/tao/network)
-[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/json7/tao/master/LICENSE)
-[![GoDoc](https://godoc.org/github.com/json7/tao?status.svg)](http://godoc.org/github.com/json7/tao)
+[![GitHub stars](https://img.shields.io/github/stars/json7/swt.svg)](https://github.com/json7/swt/stargazers) 
+[![GitHub forks](https://img.shields.io/github/forks/json7/swt.svg)](https://github.com/json7/swt/network)
+[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/json7/swt/master/LICENSE)
+[![GoDoc](https://godoc.org/github.com/json7/swt?status.svg)](http://godoc.org/github.com/json7/swt)
 
 ## Requirements
 
@@ -14,7 +14,7 @@ Light-weight TCP Asynchronous gOlang framework
 
 ## Installation
 
-`go get -u -v github.com/json7/tao`
+`go get -u -v github.com/json7/swt`
 
 ## Usage
 
@@ -28,8 +28,8 @@ import (
 	"net"
 
 	"github.com/json7/holmes"
-	"github.com/json7/tao"
-	"github.com/json7/tao/examples/chat"
+	"github.com/json7/swt"
+	"github.com/json7/swt/examples/chat"
 )
 
 // ChatServer is the chatting server.

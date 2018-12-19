@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/json7/tao"
+	"github.com/json7/swt"
 )
 
 func main() {

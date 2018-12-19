@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/leesper/holmes"
-	"github.com/json7/tao"
-	"github.com/json7/tao/examples/echo"
+	"github.com/json7/swt"
+	"github.com/json7/swt/examples/echo"
 )
 
 func main() {
